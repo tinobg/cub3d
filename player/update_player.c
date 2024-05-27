@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 21:55:09 by jubaldo           #+#    #+#             */
-/*   Updated: 2024/05/27 22:16:43 by jubaldo          ###   ########.fr       */
+/*   Updated: 2024/05/27 22:30:40 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	update_player(t_cub3d *game)
 {
-	double move_speed;
-	double rot_speed ;
+	double	move_speed;
+	double	rot_speed;
 
 	move_speed = 0.05;
 	rot_speed = 0.03;
