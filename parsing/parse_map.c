@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 18:04:56 by jubaldo           #+#    #+#             */
-/*   Updated: 2024/05/27 22:43:56 by jubaldo          ###   ########.fr       */
+/*   Updated: 2024/05/28 00:45:13 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,10 @@ static char	**allocate_new_map_lines(t_cub3d *game, char **map_lines,
 
 void	parse_map(t_cub3d *game, char *line)
 {
-	static char	**map_lines;
-	static int	map_height;
+	static char	**map_lines = (NULL);
+	static int	map_height = (0);
 	char		**new_map_lines;
 
-	map_lines = NULL;
-	map_height = 0;
 	new_map_lines = allocate_new_map_lines(game, map_lines, map_height);
 	add_line_to_map(game, new_map_lines, line, map_height);
 	map_lines = new_map_lines;
