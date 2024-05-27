@@ -6,39 +6,11 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 16:37:14 by jubaldo           #+#    #+#             */
-/*   Updated: 2024/05/27 20:28:53 by jubaldo          ###   ########.fr       */
+/*   Updated: 2024/05/27 22:08:17 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-void	calc_step_and_side_dist(t_cub3d *game, t_ray *ray)
-{
-	if (ray->ray_dir_x < 0)
-	{
-		ray->step_x = -1;
-		ray->side_dist_x = (game->player.pos_x - ray->map_x) \
-							* ray->delta_dist_x;
-	}
-	else
-	{
-		ray->step_x = 1;
-		ray->side_dist_x = (ray->map_x + 1.0 - game->player.pos_x) \
-							* ray->delta_dist_x;
-	}
-	if (ray->ray_dir_y < 0)
-	{
-		ray->step_y = -1;
-		ray->side_dist_y = (game->player.pos_y - ray->map_y) \
-							* ray->delta_dist_y;
-	}
-	else
-	{
-		ray->step_y = 1;
-		ray->side_dist_y = (ray->map_y + 1.0 - game->player.pos_y) \
-							* ray->delta_dist_y;
-	}
-}
 
 void	calc_perp_wall_dist(t_cub3d *game, t_ray *ray)
 {
@@ -61,8 +33,25 @@ void	calc_line_height(t_cub3d *game, t_ray *ray)
 		ray->draw_end = game->win_height - 1;
 }
 
-void	calc_all(t_cub3d *game, t_ray *ray)
+double	calculate_wall_x(t_cub3d *game, t_ray *ray)
 {
-	calc_perp_wall_dist(game, ray);
-	calc_line_height(game, ray);
+	if (ray->side == 0)
+		return (game->player.pos_y + ray->perp_wall_dist * ray->ray_dir_y - \
+				floor(game->player.pos_y + ray->perp_wall_dist * \
+				ray->ray_dir_y));
+	else
+		return (game->player.pos_x + ray->perp_wall_dist * ray->ray_dir_x - \
+				floor(game->player.pos_x + ray->perp_wall_dist * \
+				ray->ray_dir_x));
+}
+
+int	calculate_texture_x(double wall_x, t_ray *ray)
+{
+	int	texture_x;
+
+	texture_x = (int)(wall_x * (double)TEX_WIDTH);
+	if ((ray->side == 0 && ray->ray_dir_x > 0) || \
+			(ray->side == 1 && ray->ray_dir_y < 0))
+		texture_x = TEX_WIDTH - texture_x - 1;
+	return (texture_x);
 }
