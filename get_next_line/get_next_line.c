@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 04:00:46 by jubaldo           #+#    #+#             */
-/*   Updated: 2024/05/18 17:19:52 by jubaldo          ###   ########.fr       */
+/*   Updated: 2024/05/27 23:03:40 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ char	*recurs(int depth, int *ret, int fd)
 	else
 	{
 		line = recurs(depth + 1, ret, fd);
-		line[depth] = buff[0];
+		if (line)
+			line[depth] = buff[0];
 	}
 	return (line);
 }
