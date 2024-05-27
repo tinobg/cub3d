@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 17:17:11 by jubaldo           #+#    #+#             */
-/*   Updated: 2024/05/27 22:14:29 by jubaldo          ###   ########.fr       */
+/*   Updated: 2024/05/27 22:34:02 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,6 @@ typedef struct s_draw_params
 	double	step;
 	double	wall_x;
 }	t_draw_params;
-
-
 
 typedef struct s_cub3d {
 	void		*mlx;
