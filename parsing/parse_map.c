@@ -3,42 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brjoves <brjoves@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 18:04:56 by jubaldo           #+#    #+#             */
-/*   Updated: 2024/05/27 19:51:08 by brjoves          ###   ########.fr       */
+/*   Updated: 2024/05/27 22:43:56 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void parse_map(t_cub3d *game, char *line) {
-    static char **map_lines = NULL;
-    static int map_height = 0;
+static void	add_line_to_map(t_cub3d *game, char **map_lines,
+					char *line, int map_height)
+{
+	map_lines[map_height] = ft_strdup(line);
+	if (!map_lines[map_height])
+		error_exit(game, "Error: Memory allocation failed");
+}
 
-    // Allocate memory for new line
-    char **new_map_lines = malloc(sizeof(char *) * (map_height + 1));
-    if (!new_map_lines)
-        error_exit(game, "Error: Memory allocation failed");
-    
-    // Copy existing lines to new array
-    for (int i = 0; i < map_height; i++) {
-        new_map_lines[i] = map_lines[i];
-    }
+static char	**allocate_new_map_lines(t_cub3d *game, char **map_lines,
+							int map_height)
+{
+	char	**new_map_lines;
+	int		i;
 
-    // Add new line to the array
-    new_map_lines[map_height] = ft_strdup(line);
-    if (!new_map_lines[map_height])
-        error_exit(game, "Error: Memory allocation failed");
+	new_map_lines = malloc(sizeof(char *) * (map_height + 1));
+	if (!new_map_lines)
+		error_exit(game, "Error: Memory allocation failed");
+	i = 0;
+	while (i < map_height)
+	{
+		new_map_lines[i] = map_lines[i];
+		i++;
+	}
+	if (map_lines)
+		free(map_lines);
+	return (new_map_lines);
+}
 
-    // Free old map array if necessary
-    if (map_lines)
-        free(map_lines);
-    
-    map_lines = new_map_lines;
-    map_height++;
+void	parse_map(t_cub3d *game, char *line)
+{
+	static char	**map_lines;
+	static int	map_height;
+	char		**new_map_lines;
 
-    game->map = map_lines;
-    game->map_height = map_height;
-    game->map_width = strlen(line); // Assumes all lines have the same length
+	map_lines = NULL;
+	map_height = 0;
+	new_map_lines = allocate_new_map_lines(game, map_lines, map_height);
+	add_line_to_map(game, new_map_lines, line, map_height);
+	map_lines = new_map_lines;
+	map_height++;
+	game->map = map_lines;
+	game->map_height = map_height;
+	game->map_width = ft_strlen(line);
 }
