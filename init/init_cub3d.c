@@ -3,34 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub3d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brjoves <brjoves@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 22:05:24 by jubaldo           #+#    #+#             */
-/*   Updated: 2024/05/27 19:29:52 by brjoves          ###   ########.fr       */
+/*   Updated: 2024/05/27 22:33:09 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static void init_textures(t_cub3d *game, char *texture_paths[]) {
-    int i;
+static void	init_textures(t_cub3d *game, char *texture_paths[])
+{
+	int	i;
 
-    i = 0;
-    while (i < NUM_TEXTURES) {
-        printf("Loading texture: %s\n", texture_paths[i]);
-        game->textures[i].img = mlx_xpm_file_to_image(game->mlx, texture_paths[i], &game->textures[i].width, &game->textures[i].height);
-        if (game->textures[i].img == NULL) {
-            printf("Failed to load texture: %s\n", texture_paths[i]);
-            perror("mlx_xpm_file_to_image");
-            error_exit(game, "Error: Texture not loaded");
-        }
-        game->textures[i].data = (int *)mlx_get_data_addr(game->textures[i].img, &game->textures[i].bpp, &game->textures[i].size_line, &game->textures[i].endian);
-        if (game->textures[i].data == NULL) {
-            perror("mlx_get_data_addr");
-            error_exit(game, "Error: Failed to get texture data");
-        }
-        i++;
-    }
+	i = 0;
+	while (i < NUM_TEXTURES)
+	{
+		game->textures[i].img = mlx_xpm_file_to_image(game->mlx, \
+			texture_paths[i], &game->textures[i].width, \
+			&game->textures[i].height);
+		if (game->textures[i].img == NULL)
+		{
+			printf("Failed to load texture: %s\n", texture_paths[i]);
+			perror("mlx_xpm_file_to_image");
+			error_exit(game, "Error: Texture not loaded");
+		}
+		game->textures[i].data = (int *)mlx_get_data_addr \
+			(game->textures[i].img, &game->textures[i].bpp, \
+			&game->textures[i].size_line, \
+			&game->textures[i].endian);
+		if (game->textures[i].data == NULL)
+		{
+			perror("mlx_get_data_addr");
+			error_exit(game, "Error: Failed to get texture data");
+		}
+		i++;
+	}
 }
 
 static void	init_colors(t_cub3d *game)
