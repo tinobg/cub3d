@@ -6,18 +6,11 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 16:10:23 by jubaldo           #+#    #+#             */
-/*   Updated: 2024/05/27 17:35:28 by jubaldo          ###   ########.fr       */
+/*   Updated: 2024/05/30 00:50:22 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-static void	init_mlx(t_cub3d *game)
-{
-	game->mlx = mlx_init();
-	if (!game->mlx)
-		error_exit(game, "Error: Error initializing mlx");
-}
 
 static void	init_window(t_cub3d *game)
 {
@@ -28,7 +21,6 @@ static void	init_window(t_cub3d *game)
 
 void	init_game(t_cub3d *game)
 {
-	init_mlx(game);
 	init_window(game);
 	game->img = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
 	if (!game->img)
