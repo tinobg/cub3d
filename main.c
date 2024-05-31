@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 19:16:22 by jubaldo           #+#    #+#             */
-/*   Updated: 2024/05/27 22:34:53 by jubaldo          ###   ########.fr       */
+/*   Updated: 2024/05/31 20:07:53 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	main(int ac, char **av)
 	t_cub3d	game;
 
 	ft_memset(&game, 0, sizeof(t_cub3d));
-	init_cub3d(&game);
 	parse_args(ac, av);
+	init_cub3d(&game);
 	init_game(&game);
 	parse_file(&game, av[1]);
 	mlx_hook(game.win, 2, 1L << 0, handle_keypress, &game);
