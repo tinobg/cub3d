@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 17:15:48 by jubaldo           #+#    #+#             */
-/*   Updated: 2024/05/27 22:52:17 by jubaldo          ###   ########.fr       */
+/*   Updated: 2024/05/31 13:27:42 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ static void	init_player_position(t_cub3d *game)
 		x = 0;
 		while (x < game->map_width)
 		{
-			if (game->map[y][x] == 'N')
+			if (y >= 0 && y < game->map_height && x >= 0 && x < \
+				(int)ft_strlen(game->map[y]) && game->map[y][x] == 'N')
 			{
 				set_player_position(game, x, y);
 				return ;
