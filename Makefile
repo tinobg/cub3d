@@ -6,11 +6,11 @@
 #    By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/14 17:17:38 by jubaldo           #+#    #+#              #
-#    Updated: 2024/05/27 22:11:20 by jubaldo          ###   ########.fr        #
+#    Updated: 2024/05/31 20:21:51 by jubaldo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	cub3d
+NAME		=	cub3D
 
 SRCS		=	events/handle_keypress.c 	\
 				events/handle_keyrelease.c  \
