@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 18:01:11 by jubaldo           #+#    #+#             */
-/*   Updated: 2024/06/02 19:34:58 by jubaldo          ###   ########.fr       */
+/*   Updated: 2024/06/02 19:35:11 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void parse_color(t_color *color, char *line)
 {
+	t_cub3d game;
 	char **tokens;
 	int rgb_values[3];
 
