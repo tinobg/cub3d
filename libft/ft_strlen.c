@@ -6,13 +6,13 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 18:19:46 by jubaldo           #+#    #+#             */
-/*   Updated: 2024/05/18 18:19:58 by jubaldo          ###   ########.fr       */
+/*   Updated: 2024/06/02 18:04:52 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-size_t	ft_strlen(char const *s)
+int	ft_strlen(char const *s)
 {
 	int	i;
 

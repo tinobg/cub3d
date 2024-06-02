@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 17:17:11 by jubaldo           #+#    #+#             */
-/*   Updated: 2024/06/02 17:44:05 by jubaldo          ###   ########.fr       */
+/*   Updated: 2024/06/02 18:05:04 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,7 @@ int		ft_strncmp(const char *s1, const char *s2, unsigned int n);
 int		ft_atoi(const char *str);
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 char	*ft_strdup(const char *s);
-size_t	ft_strlen(char const *s);
+int	ft_strlen(char const *s);
 int 	ft_strcmp(const char *s1, const char *s2);
 char	*ft_strchr(const char *s, int c);
 
