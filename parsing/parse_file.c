@@ -6,43 +6,72 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 17:15:48 by jubaldo           #+#    #+#             */
-/*   Updated: 2024/05/31 13:27:42 by jubaldo          ###   ########.fr       */
+/*   Updated: 2024/06/02 15:49:36 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static void	set_player_position(t_cub3d *game, int x, int y)
+static void set_player_position(t_cub3d *game, int x, int y, char direction)
 {
 	game->player.pos_x = x + 0.5;
 	game->player.pos_y = y + 0.5;
-	game->player.dir_x = -1;
-	game->player.dir_y = 0;
-	game->player.plane_x = 0;
-	game->player.plane_y = 0.66;
-	game->map[y][x] = '0';
+
+	if (direction == 'N')
+	{
+		game->player.dir_x = 0;
+		game->player.dir_y = -1;
+		game->player.plane_x = 0.66;
+		game->player.plane_y = 0;
+	}
+	else if (direction == 'S')
+	{
+		game->player.dir_x = 0;
+		game->player.dir_y = 1;
+		game->player.plane_x = -0.66;
+		game->player.plane_y = 0;
+	}
+	else if (direction == 'W')
+	{
+		game->player.dir_x = -1;
+		game->player.dir_y = 0;
+		game->player.plane_x = 0;
+		game->player.plane_y = -0.66;
+	}
+	else if (direction == 'E')
+	{
+		game->player.dir_x = 1;
+		game->player.dir_y = 0;
+		game->player.plane_x = 0;
+		game->player.plane_y = 0.66;
+	}
+
+	game->map[y][x] = '0'; // Clear the starting position marker on the map
 }
 
-static void	init_player_position(t_cub3d *game)
+static void init_player_position(t_cub3d *game)
 {
-	int	x;
-	int	y;
+	int found = 0;
 
-	y = 0;
-	while (y < game->map_height)
+	for (int y = 0; y < game->map_height; y++)
 	{
-		x = 0;
-		while (x < game->map_width)
+		for (int x = 0; x < (int)ft_strlen(game->map[y]); x++)
 		{
-			if (y >= 0 && y < game->map_height && x >= 0 && x < \
-				(int)ft_strlen(game->map[y]) && game->map[y][x] == 'N')
+			char cell = game->map[y][x];
+			if (cell == 'N' || cell == 'S' || cell == 'W' || cell == 'E')
 			{
-				set_player_position(game, x, y);
-				return ;
+				set_player_position(game, x, y, cell);
+				found = 1;
+				break;
 			}
-			x++;
 		}
-		y++;
+		if (found)
+			break;
+	}
+
+	if (!found)
+	{
+		error_exit(game, "Error: No initial player position set in the map");
 	}
 }
 
