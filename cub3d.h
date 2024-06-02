@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 17:17:11 by jubaldo           #+#    #+#             */
-/*   Updated: 2024/06/02 18:05:04 by jubaldo          ###   ########.fr       */
+/*   Updated: 2024/06/02 18:21:43 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,9 +138,9 @@ void	parse_textures(t_cub3d *game, char *line);
 void	parse_color(t_color *color, char *line);
 void	parse_map(t_cub3d *game, char *line);
 void	parse_args(int ac, char **av);
-
+void 	validate_map_walls(t_cub3d *game);
 // EVENTS
-int		handle_keypress(int keycode, t_cub3d *game);
+int handle_keypress(int keycode, t_cub3d *game);
 int		handle_keyrelease(int keycode, t_cub3d *game);
 
 // RAYCASTING
@@ -184,7 +184,7 @@ int		ft_strncmp(const char *s1, const char *s2, unsigned int n);
 int		ft_atoi(const char *str);
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 char	*ft_strdup(const char *s);
-int	ft_strlen(char const *s);
+int		ft_strlen(char const *s);
 int 	ft_strcmp(const char *s1, const char *s2);
 char	*ft_strchr(const char *s, int c);
 

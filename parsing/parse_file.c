@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 17:15:48 by jubaldo           #+#    #+#             */
-/*   Updated: 2024/06/02 18:03:11 by jubaldo          ###   ########.fr       */
+/*   Updated: 2024/06/02 19:33:08 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ static void set_player_position(t_cub3d *game, int x, int y, char direction)
 		game->player.plane_x = 0;
 		game->player.plane_y = 0.66;
 	}
-
-	game->map[y][x] = '0'; // Clear the starting position marker on the map
+	game->map[y][x] = '0';
 }
 
 static void init_player_position(t_cub3d *game)
@@ -70,9 +69,7 @@ static void init_player_position(t_cub3d *game)
 	}
 
 	if (!found)
-	{
 		error_exit(game, "Error: No initial player position set in the map");
-	}
 }
 
 void	parse_line(t_cub3d *game, char *line)
