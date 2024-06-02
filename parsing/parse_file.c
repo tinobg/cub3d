@@ -48,7 +48,7 @@ static void set_player_position(t_cub3d *game, int x, int y, char direction)
 	game->map[y][x] = '0';
 }
 
-void init_player_position(t_cub3d *game)
+static void init_player_position(t_cub3d *game)
 {
 	int found = 0;
 
@@ -93,43 +93,20 @@ void parse_line(t_cub3d *game, char *line)
 		parse_map(game, line); // Treat it as a map line
 }
 
-void parse_file(t_cub3d *game, const char *filename)
+void	parse_file(t_cub3d *game, const char *filename)
 {
-    int fd;
-    char *line;
+	int		fd;
+	char	*line;
 
-    printf("Opening file: %s\n", filename);
-    fd = open(filename, O_RDONLY);
-    if (fd < 0)
-        error_exit(game, "Error: Error opening file");
-
-    while (get_next_line(fd, &line) > 0)
-    {
-        printf("Parsing line: %s\n", line);
-        parse_line(game, line);
-        free(line);
-    }
-
-    close(fd);
-
-    // Print the parsed map to verify
-    printf("Parsed map:\n");
-    for (int y = 0; y < game->map_height; y++)
-    {
-        printf("%s\n", game->map[y]);
-    }
-
-    // Validate the map after parsing all lines
-    validate_map_walls(game);
-
-    // Initialize player position after validation
-    init_player_position(game);
-
-    printf("Map and player position initialized\n");
-
-    // Print map to verify
-    for (int y = 0; y < game->map_height; y++)
-    {
-        printf("%s\n", game->map[y]);
-    }
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		error_exit(game, "Error: Error opening file");
+	while (get_next_line(fd, &line) > 0)
+	{
+		parse_line(game, line);
+		free(line);
+	}
+	close(fd);
+	validate_map_walls(game);
+	init_player_position(game);
 }
