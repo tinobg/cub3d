@@ -33,6 +33,7 @@ SRCS		=	events/handle_keypress.c 	\
 				parsing/parse_file.c \
 				parsing/parse_map.c \
 				parsing/parse_texture.c \
+				parsing/validate_map_walls.c \
 				player/linear_moves.c \
 				player/rotation_moves.c \
 				player/update_player.c \
