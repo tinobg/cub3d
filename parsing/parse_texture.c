@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 17:30:14 by jubaldo           #+#    #+#             */
-/*   Updated: 2024/06/02 17:37:55 by jubaldo          ###   ########.fr       */
+/*   Updated: 2024/06/02 19:35:59 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,5 @@ void parse_textures(t_cub3d *game, char *line)
 		free_tokens(tokens);
 		error_exit(game, "Error: Failed to get texture data");
 	}
-
 	free_tokens(tokens);
 }
