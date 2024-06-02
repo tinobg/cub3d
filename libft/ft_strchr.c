@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 21:28:42 by jubaldo           #+#    #+#             */
-/*   Updated: 2024/06/02 17:42:54 by jubaldo          ###   ########.fr       */
+/*   Created: 2024/06/02 17:43:46 by jubaldo           #+#    #+#             */
+/*   Updated: 2024/06/02 17:43:55 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int ft_strcmp(const char *s1, const char *s2)
+char *ft_strchr(const char *s, int c)
 {
-	while (*s1 && (*s1 == *s2))
+	while ((*s != '\0') && (*s != c))
 	{
-		s1++;
-		s2++;
+		s++;
 	}
-	return *(unsigned char *)s1 - *(unsigned char *)s2;
+	if (*s == c)
+	{
+		return ((char *)s);
+	}
+	return ((char *)NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: jubaldo <jubaldo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 18:01:11 by jubaldo           #+#    #+#             */
-/*   Updated: 2024/06/01 22:00:47 by jubaldo          ###   ########.fr       */
+/*   Updated: 2024/06/02 17:31:49 by jubaldo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void parse_color(t_color *color, char *line)
 	tokens = ft_split(line + 2, ',');
 	if (!tokens)
 		error_exit(&game, "Error: Memory allocation failed for color tokens");
-
 	for (int i = 0; i < 3; i++)
 	{
 		if (!tokens[i] || !*tokens[i])
@@ -38,10 +37,8 @@ void parse_color(t_color *color, char *line)
 			error_exit(&game, "Error: RGB values out of bounds [0-255]");
 		}
 	}
-
 	color->r = rgb_values[0];
 	color->g = rgb_values[1];
 	color->b = rgb_values[2];
-
 	free_tokens(tokens);
 }
